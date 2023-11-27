@@ -28,12 +28,13 @@
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword" class="form-label">Пароль</label>
-        <input type="password" class="form-control" id="exampleInputPassword" name="registerPassword">
+        <input type="password" class="form-control" id="exampleInputPassword" name="registerPassword" aria-describedby="passwordHelp">
+        <div id="passwordHelp" class="form-text">У пароля должна быть хотя бы 1 цифра.</div>
       </div>
       <div class="d-grid">
         <button type="submit" class="btn btn-dark mb-3">Зарегестрироваться</button>
       </div>
-      <div class="mt-3 text-center error-mes" style="display: none">Неверный логин или пароль</div>
+      <div class="mt-3 text-center error-mes" style="display: none">Неверные данные</div>
     </form>
   </div>
 </div>

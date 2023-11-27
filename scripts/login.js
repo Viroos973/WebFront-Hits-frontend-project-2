@@ -43,5 +43,3 @@ function UpdateNavBar(data){
     $("nav .navbar-unauthorized").css('display', 'none');
     $(".account-name").text(data.email)
 }
-
-loginFunction()
