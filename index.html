@@ -30,10 +30,10 @@
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item navbar-unauthorized">
-                        <a class="nav-link" href="#">Вход</a>
+                        <a class="nav-link" href="/login" onclick="route()">Вход</a>
                     </li>
                     <li class="nav-item dropdown navbar-authorized" style="display: none">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle account-name" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Выподающий список
                         </a>
                         <ul class="dropdown-menu">
@@ -46,9 +46,9 @@
         </div>
     </nav>
 
-    <div class="content mt-5"></div>
+    <div class="content mt-5 d-flex align-items-center" id="myContent"></div>
 
-    <footer class="footer">
+    <footer class="footer mt-3">
         <div class="container">
             <p><span>&copy;</span> 2023 - Блог №415</p>
         </div>
