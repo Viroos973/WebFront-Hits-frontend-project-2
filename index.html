@@ -9,6 +9,8 @@
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 
     <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
@@ -30,10 +32,10 @@
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item navbar-unauthorized">
-                        <a class="nav-link" href="#">Вход</a>
+                        <a class="nav-link" href="/login" onclick="route()">Вход</a>
                     </li>
                     <li class="nav-item dropdown navbar-authorized" style="display: none">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle account-name" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Выподающий список
                         </a>
                         <ul class="dropdown-menu">
@@ -46,9 +48,9 @@
         </div>
     </nav>
 
-    <div class="content mt-5"></div>
+    <div class="content mt-5 d-flex align-items-center" id="myContent"></div>
 
-    <footer class="footer">
+    <footer class="footer mt-3">
         <div class="container">
             <p><span>&copy;</span> 2023 - Блог №415</p>
         </div>
