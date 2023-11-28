@@ -1,4 +1,5 @@
 import {Validate} from "./validationForm.js";
+import {logoutFunction} from "./logout.js"
 
 export async function loginFunction(){
     document.getElementById("myContent").innerHTML =
@@ -42,4 +43,5 @@ function UpdateNavBar(data){
     $("nav .navbar-authorized").css('display', 'block');
     $("nav .navbar-unauthorized").css('display', 'none');
     $(".account-name").text(data.email)
+    logoutFunction()
 }
