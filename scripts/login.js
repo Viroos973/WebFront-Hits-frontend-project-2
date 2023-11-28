@@ -22,7 +22,7 @@ export async function loginFunction(){
             }
         }).then((json) => {
             if (json !== undefined) {
-                console.log(json)
+                localStorage.setItem('token', json['token'])
                 UpdateNavBar(data)
             }
         })

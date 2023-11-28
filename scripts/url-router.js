@@ -1,5 +1,6 @@
 import {loginFunction} from "./login.js"
 import {registrationFunction} from "./register.js"
+import {profileFunction} from "./getProfile.js"
 
 const route = (event) => {
     event = event || window.event
@@ -10,7 +11,8 @@ const route = (event) => {
 
 const routes = {
     "/login": loginFunction,
-    "/register": registrationFunction
+    "/register": registrationFunction,
+    "/profile": profileFunction
 }
 
 const handleLocation = async () => {
