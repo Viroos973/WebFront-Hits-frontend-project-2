@@ -20,7 +20,7 @@ export async function editProfileFunction(data){
 
     $("#form-profile").submit(function (event){
         event.preventDefault()
-        data = GetParams()
+        const dataAfterChanges = GetParams()
 
         fetch('https://blog.kreosoft.space/api/account/profile', {
             method: 'PUT',
@@ -28,7 +28,7 @@ export async function editProfileFunction(data){
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(dataAfterChanges)
         }).then((response) => {
             if (!response.ok){
                 $("#form-profile .error-mes").css('display', 'block');
@@ -68,10 +68,10 @@ function GiveParams(data){
 }
 
 function UpdateFormForChanges(){
-    $("#exampleInputUserName").removeClass("form-control-plaintext").addClass("form-control")
-    $("#exampleInputBirthDate").removeClass("form-control-plaintext").addClass("form-control").removeAttr("disabled")
-    $("#exampleInputPhone").removeClass("form-control-plaintext").addClass("form-control")
-    $("#exampleInputEmail").removeClass("form-control-plaintext").addClass("form-control")
+    $("#exampleInputUserName").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
+    $("#exampleInputBirthDate").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
+    $("#exampleInputPhone").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
+    $("#exampleInputEmail").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
     $("#exampleInputGender").removeAttr("disabled")
     $("#ChangeProfile").css('display', 'none')
     $("#CancelChange").css('display', 'block')
@@ -79,10 +79,10 @@ function UpdateFormForChanges(){
 }
 
 function UpdateForm(){
-    $("#exampleInputUserName").removeClass("form-control").addClass("form-control-plaintext")
-    $("#exampleInputBirthDate").removeClass("form-control").addClass("form-control-plaintext").attr("disabled", "disabled");
-    $("#exampleInputPhone").removeClass("form-control").addClass("form-control-plaintext")
-    $("#exampleInputEmail").removeClass("form-control").addClass("form-control-plaintext")
+    $("#exampleInputUserName").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
+    $("#exampleInputBirthDate").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
+    $("#exampleInputPhone").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
+    $("#exampleInputEmail").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
     $("#exampleInputGender").attr("disabled", "disabled");
     $("#ChangeProfile").css('display', 'block')
     $("#CancelChange").css('display', 'none')
