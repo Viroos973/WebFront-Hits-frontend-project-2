@@ -68,10 +68,10 @@ function GiveParams(data){
 }
 
 function UpdateFormForChanges(){
-    $("#exampleInputUserName").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
-    $("#exampleInputBirthDate").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
-    $("#exampleInputPhone").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
-    $("#exampleInputEmail").removeClass("form-control-plaintext").addClass("form-control").removeAttr("readonly")
+    $("#exampleInputUserName").removeAttr("disabled")
+    $("#exampleInputBirthDate").removeAttr("disabled")
+    $("#exampleInputPhone").removeAttr("disabled")
+    $("#exampleInputEmail").removeAttr("disabled")
     $("#exampleInputGender").removeAttr("disabled")
     $("#ChangeProfile").css('display', 'none')
     $("#CancelChange").css('display', 'block')
@@ -79,11 +79,11 @@ function UpdateFormForChanges(){
 }
 
 function UpdateForm(){
-    $("#exampleInputUserName").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
-    $("#exampleInputBirthDate").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
-    $("#exampleInputPhone").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
-    $("#exampleInputEmail").removeClass("form-control").addClass("form-control-plaintext").attr("readonly", "readonly")
-    $("#exampleInputGender").attr("disabled", "disabled");
+    $("#exampleInputUserName").attr("disabled", "disabled")
+    $("#exampleInputBirthDate").attr("disabled", "disabled")
+    $("#exampleInputPhone").attr("disabled", "disabled")
+    $("#exampleInputEmail").attr("disabled", "disabled")
+    $("#exampleInputGender").attr("disabled", "disabled")
     $("#ChangeProfile").css('display', 'block')
     $("#CancelChange").css('display', 'none')
     $("#SaveChange").css('display', 'none')

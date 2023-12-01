@@ -10,6 +10,4 @@ body {
 }
 .footer {
     flex-shrink: 0;
-    background: black;
-    color: aliceblue;
 }
