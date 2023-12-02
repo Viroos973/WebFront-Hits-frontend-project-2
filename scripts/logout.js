@@ -8,14 +8,10 @@ export async function logoutFunction(){
             }
         }).then((response) => {
             if (response.ok){
-                UpdateNavBar()
                 localStorage.setItem('token', "")
+                history.pushState({}, "", "/")
+                location.reload()
             }
         })
     })
-}
-
-function UpdateNavBar(){
-    $("nav .navbar-authorized").css('display', 'none');
-    $("nav .navbar-unauthorized").css('display', 'block');
 }

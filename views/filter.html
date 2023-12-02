@@ -1,0 +1,78 @@
+<div class="card-wrapper">
+  <div class="card mx-auto mt-4 col-12 col-md-8" style="height: auto;">
+    <div class="card-header">
+      Фильтры
+    </div>
+    <div class="card-body">
+      <form id="form-filter">
+        <div class="row my-3">
+          <div class="col-12 col-md">
+            <label for="searchByAuthors" class="form-label">Поиск по имени автора</label>
+            <input type="text" class="form-control" id="searchByAuthors">
+          </div>
+          <div class="col-12 col-md">
+            <label for="searchByTags" class="form-label">Поиск по тегам</label>
+            <select class="form-select" size="3" id="searchByTags" multiple>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3 align-items-center">
+          <div class="col-12 col-md-4">
+            <label for="sortingPosts" class="form-label">Сортировать</label>
+            <select class="form-select" id="sortingPosts">
+              <option value="1">По дате создания (сначала новые)</option>
+              <option value="2">По дате создания (сначала старые)</option>
+              <option value="3">По количеству лайков (по возрастанию)</option>
+              <option value="4">По количеству лайков (по убывванию)</option>
+            </select>
+          </div>
+          <div class="col-12 col-md">
+            <label for="searchMinMinutes" class="form-label">Время чтения от</label>
+            <input type="text" class="form-control" id="searchMinMinutes">
+          </div>
+          <div class="col-12 col-lg">
+            <label for="searchMaxMinutes" class="form-label">Время чтения до</label>
+            <input type="text" class="form-control" id="searchMaxMinutes">
+          </div>
+          <div class="col-12 col-lg authorized d-none">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckGroups">
+              <label class="form-check-label" for="flexCheckGroups">
+                Только мои группы
+              </label>
+            </div>
+          </div>
+          <div class="col-12 col-lg">
+            <div class="d-flex justify-content-end mb-3">
+              <button type="submit" class="btn btn-primary" id="SaveFilter">Применить</button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center error-mes" style="display: none">Неверные данные</div>
+      </form>
+    </div>
+  </div>
+  <div class="card mx-auto mt-4 col-12 col-md-8 d-none" id="postCarts">
+    <div class="card-body">
+        <p class="card-text mb-3" id="user-text">Test</p>
+        <h3 class="card-title">Test</h3>
+      <div class="col-md-12 text-center">
+        <img src="" class="img-fluid mb-3" alt="">
+      </div>
+        <p class="card-text mb-3" id="post-text">Test</p>
+        <p class="card-text mb-3" id="tags-text">Test</p>
+        <p class="card-text mb-3" id="time-text">Test</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <p class="count-comments m-0">0</p>
+        <button type="button" class="btn" id="text-comments"><i class="far fa-comment-dots"></i></button>
+      </div>
+      <div class="d-flex align-items-center">
+        <p class="count-like m-0">0</p>
+        <button type="button" class="btn" id="addOrDeleteLike"><i class="far fa-heart"></i></button>
+      </div>
+    </div>
+  </div>
+  <div id="postsOnPage"></div>
+</div>

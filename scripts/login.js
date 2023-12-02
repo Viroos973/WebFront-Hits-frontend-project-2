@@ -1,9 +1,8 @@
-import {Validate} from "./validationForm.js";
-import {logoutFunction} from "./logout.js"
+import {Validate} from "./validationForm.js"
 
 export async function loginFunction(){
     document.getElementById("myContent").innerHTML =
-        await fetch("/BlogFrontend/views/login.html").then((data) => data.text())
+        await fetch("/views/login.html").then((data) => data.text())
 
     Validate();
 
@@ -24,7 +23,8 @@ export async function loginFunction(){
         }).then((json) => {
             if (json !== undefined) {
                 localStorage.setItem('token', json['token'])
-                UpdateNavBar(data)
+                history.pushState({}, "", "/")
+                location.reload()
             }
         })
     })
@@ -37,11 +37,4 @@ function GetParams(){
         'email': email,
         'password': password
     }
-}
-
-function UpdateNavBar(data){
-    $("nav .navbar-authorized").css('display', 'block');
-    $("nav .navbar-unauthorized").css('display', 'none');
-    $(".account-name").text(data.email)
-    logoutFunction()
 }

@@ -1,9 +1,8 @@
 import {Validate} from "./validationForm.js";
-import {logoutFunction} from "./logout.js"
 
 export async function registrationFunction(){
     document.getElementById("myContent").innerHTML =
-        await fetch("/BlogFrontend/views/register.html").then((data) => data.text())
+        await fetch("/views/register.html").then((data) => data.text())
 
     Validate();
 
@@ -24,7 +23,6 @@ export async function registrationFunction(){
         }).then((json) => {
             if (json !== undefined) {
                 localStorage.setItem('token', json['token'])
-                UpdateNavBar(data)
             }
         })
     })
@@ -45,11 +43,4 @@ function GetParams(){
         "gender": gender,
         "phoneNumber": (phoneNumber === "")? null : phoneNumber
     }
-}
-
-function UpdateNavBar(data){
-    $("nav .navbar-authorized").css('display', 'block');
-    $("nav .navbar-unauthorized").css('display', 'none');
-    $(".account-name").text(data.email)
-    logoutFunction()
 }

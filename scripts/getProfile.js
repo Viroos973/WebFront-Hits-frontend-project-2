@@ -14,13 +14,6 @@ export async function profileFunction(){
     }).then((json) => {
         if (json !== undefined) {
             editProfileFunction(json)
-        } else {
-            UpdateNavBar()
         }
     })
-}
-
-function UpdateNavBar(){
-    $("nav .navbar-authorized").css('display', 'none');
-    $("nav .navbar-unauthorized").css('display', 'block');
 }
