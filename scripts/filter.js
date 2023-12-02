@@ -1,4 +1,3 @@
-
 export async function filterFunction(){
     document.getElementById("myContent").innerHTML =
         await fetch("/views/filter.html").then((data) => data.text())
@@ -76,5 +75,48 @@ function createBasicPost(post, template) {
     postCard.find("#post-text").text(post.description)
     postCard.find("#tags-text").text(post.tags.map(tag => "#" + tag.name + " "))
     postCard.find("#time-text").text("Время чтения: " + post.readingTime + " мин")
+    postCard.find(".count-comments").text(post.commentsCount)
+    postCard.find(".count-like").text(post.likes)
+    if(post.hasLike) postCard.find("#hasLike").removeClass("far").addClass("fas")
+    else postCard.find("#hasLike").removeClass("fas").addClass("far")
+
+    postCard.find("#addOrDeleteLike").click(function (){
+        let likeIcon = this.querySelector('i');
+        if (likeIcon.classList.contains('far')) {
+            addLikeFunction(post, postCard, likeIcon, postCard.find(".count-like").text())
+        } else {
+            deleteLikeFunction(post, postCard, likeIcon, postCard.find(".count-like").text())
+        }
+    })
     return postCard;
+}
+
+async function addLikeFunction(post, postCard, likeIcon, countLike){
+    fetch(`https://blog.kreosoft.space/api/post/${post.id}/like`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    }).then((response) => {
+        if (response.ok){
+            likeIcon.classList.remove('far');
+            likeIcon.classList.add('fas');
+            postCard.find(".count-like").text(parseInt(countLike) + 1)
+        }
+    })
+}
+
+async function deleteLikeFunction(post, postCard, likeIcon, countLike){
+    fetch(`https://blog.kreosoft.space/api/post/${post.id}/like`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    }).then((response) => {
+        if (response.ok){
+            likeIcon.classList.remove('fas');
+            likeIcon.classList.add('far');
+            postCard.find(".count-like").text(parseInt(countLike) - 1)
+        }
+    })
 }
