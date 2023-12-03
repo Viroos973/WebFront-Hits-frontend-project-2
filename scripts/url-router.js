@@ -7,8 +7,13 @@ import {UpdatePage} from "./updatePage.js";
 const route = (event) => {
     event = event || window.event
     event.preventDefault()
-    window.history.pushState({}, "", event.target.href)
-    handleLocation()
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete('page');
+    let hrefPage =  event.target.href
+    hrefPage = hrefPage.substring(hrefPage.indexOf('=') + 1)
+    url.searchParams.append('page', hrefPage);
+    window.location.href = url.toString();
 }
 
 const routes = {
@@ -20,9 +25,10 @@ const routes = {
 
 export const handleLocation = async () => {
     const path = window.location.pathname
+    const params = window.location.search
     const route = routes[path]
     UpdatePage()
-    route()
+    route(params)
 }
 
 window.onpopstate = handleLocation
