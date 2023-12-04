@@ -4,7 +4,6 @@ export async function profileFunction(){
     fetch('https://blog.kreosoft.space/api/account/profile', {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
     }).then((response) => {

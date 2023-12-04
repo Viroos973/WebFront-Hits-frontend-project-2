@@ -3,6 +3,7 @@ import {registrationFunction} from "./register.js"
 import {profileFunction} from "./getProfile.js"
 import {filterFunction} from "./filter.js"
 import {UpdatePage} from "./updatePage.js";
+import {getPostFunc} from "./getPost.js";
 
 const route = (event) => {
     event = event || window.event
@@ -17,6 +18,7 @@ const route = (event) => {
 }
 
 const routes = {
+    "/post/:Id": getPostFunc,
     "/": filterFunction,
     "/login": loginFunction,
     "/register": registrationFunction,
@@ -24,8 +26,16 @@ const routes = {
 }
 
 export const handleLocation = async () => {
-    const path = window.location.pathname
-    const params = window.location.search
+    let path = window.location.pathname
+    let params = window.location.search
+
+    const match = path.match('([0-9a-f-]+)')
+
+    if (match){
+        path = path.replace(/\/post\/[0-9a-f-]+/, "/post/:Id")
+        params = match[0]
+    }
+
     const route = routes[path]
     UpdatePage()
     route(params)

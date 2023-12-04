@@ -1,3 +1,5 @@
+import {createBasicPost} from "./createPost.js";
+
 export async function filterFunction(params){
     document.getElementById("myContent").innerHTML =
         await fetch("/views/filter.html").then((data) => data.text())
@@ -62,98 +64,6 @@ export async function filterFunction(params){
         paramString = "?" + paramString.replace(/%5B%5D/g, '')
         history.pushState({}, "", paramString)
         location.reload()
-    })
-}
-
-function createBasicPost(post, template) {
-    let postCard = template.clone()
-    postCard.removeAttr("id")
-    postCard.removeClass("d-none")
-
-    if (post.communityName)
-        postCard.find("#user-text").text(post.author + " - " + post.createTime.substring(0, post.createTime.indexOf("T"))
-            + " " + post.createTime.substring(post.createTime.indexOf("T") + 1, post.createTime.indexOf("T") + 6)
-            + " в сообществе '" + post.communityName + "'")
-    else
-        postCard.find("#user-text").text(post.author + " - " + post.createTime.substring(0, post.createTime.indexOf("T"))
-            + " " + post.createTime.substring(post.createTime.indexOf("T") + 1, post.createTime.indexOf("T") + 6))
-
-    postCard.find(".card-title").text(post.title)
-    postCard.find(".img-fluid").attr("src", post.image)
-    postCard.find("#post-text").text(fillingDescription(post.description))
-    postCard.find("#tags-text").text(post.tags.map(tag => "#" + tag.name + " "))
-    postCard.find("#time-text").text("Время чтения: " + post.readingTime + " мин")
-    fillingAddress(post.addressId, postCard)
-    postCard.find(".count-comments").text(post.commentsCount)
-    postCard.find(".count-like").text(post.likes)
-    if(post.hasLike) postCard.find("#hasLike").removeClass("far").addClass("fas")
-    else postCard.find("#hasLike").removeClass("fas").addClass("far")
-
-    postCard.find("#addOrDeleteLike").click(function (){
-        let likeIcon = this.querySelector('i');
-        if (likeIcon.classList.contains('far')) {
-            addLikeFunction(post, postCard, likeIcon, postCard.find(".count-like").text())
-        } else {
-            deleteLikeFunction(post, postCard, likeIcon, postCard.find(".count-like").text())
-        }
-    })
-    return postCard;
-}
-
-async function fillingAddress(addressId, postCard){
-    if (addressId !== null)
-        await fetch(`https://blog.kreosoft.space/api/address/chain?objectGuid=${addressId}`, {
-            method: 'GET'
-        }).then((response) => {
-            if (response.ok){
-                return response.json()
-            }
-        }).then((json) => {
-            if (json !== undefined) {
-                let chain = ""
-                for (let address of json){
-                    chain += " " + address.text
-                }
-                postCard.find("#address-text").append(chain).removeClass('d-none')
-            }
-        })
-}
-
-function fillingDescription(text){
-    if (text.length > 500){
-        return text.substring(0, 500) + "..."
-    }
-
-    return text
-}
-
-async function addLikeFunction(post, postCard, likeIcon, countLike){
-    fetch(`https://blog.kreosoft.space/api/post/${post.id}/like`, {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-    }).then((response) => {
-        if (response.ok){
-            likeIcon.classList.remove('far');
-            likeIcon.classList.add('fas');
-            postCard.find(".count-like").text(parseInt(countLike) + 1)
-        }
-    })
-}
-
-async function deleteLikeFunction(post, postCard, likeIcon, countLike){
-    fetch(`https://blog.kreosoft.space/api/post/${post.id}/like`, {
-        method: 'DELETE',
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-    }).then((response) => {
-        if (response.ok){
-            likeIcon.classList.remove('fas');
-            likeIcon.classList.add('far');
-            postCard.find(".count-like").text(parseInt(countLike) - 1)
-        }
     })
 }
 
