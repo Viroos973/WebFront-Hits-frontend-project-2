@@ -7,7 +7,7 @@
                 <img src="" class="img-fluid mb-3" alt="">
             </div>
             <p class="card-text mb-3" id="post-text"></p>
-            <p class="card-text mb-3" id="tags-text"></p>
+            <p class="card-text mb-3 text-muted" id="tags-text"></p>
             <p class="card-text mb-3" id="time-text"></p>
             <p class="card-text mb-3 d-none" id="address-text"><i class="fas fa-compass"></i></p>
         </div>
@@ -22,4 +22,75 @@
             </div>
         </div>
     </div>
+    <div class="card mx-auto mt-4 col-12 col-md-8 d-none" id="commentCarts">
+        <div class="card-body">
+            <h3 class="card-title" id="comment-title">Комментарии</h3>
+            <ul id="commentList" class="list-unstyled">
+            </ul>
+        </div>
+    </div>
 </div>
+
+<li class="d-none rootComment">
+    <div class="ms-2 mt-2">
+        <div class="comment-header d-flex gap-1">
+            <span class="comment-name"></span>
+            <div class="d-none myComment">
+                <button type="submit" class="btn p-0"><i class="fas fa-pen-fancy"></i></button>
+                <button type="submit" class="btn p-0"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="comment-body font-size-1-15"></div>
+            <span class="text-muted d-none changeText"> (изменен)</span>
+        </div>
+        <div class="mb-1 d-flex gap-1 d-none btnChange">
+            <label><textarea class="form-control" rows="1"></textarea></label>
+            <button type="submit" class="btn btn-warning">Редактировать</button>
+        </div>
+        <div class="comment-date">
+            <span class="textCommentDate"></span>
+            <button class="btn btn-link p-0 replyBtn">Ответить</button>
+        </div>
+        <form class="commentReplyForm">
+            <div class="mb-1 d-flex gap-1 d-none btnReply">
+                <label><textarea class="form-control" rows="1"></textarea></label>
+                <button type="submit" class="btn btn-primary">Ответить</button>
+            </div>
+        </form>
+        <div class="open-sub-comment d-none">
+            <button class="btn btn-link p-0 mb-1">Раскрыть ответы</button>
+            <ul class="list-unstyled ms-4 sub-comments d-none"></ul>
+        </div>
+    </div>
+</li>
+
+<li class="d-none subComment">
+    <div class="ms-2 mt-2">
+        <div class="comment-header d-flex gap-1">
+            <span class="comment-name"></span>
+            <div class="d-none myComment">
+                <button type="submit" class="btn p-0"><i class="fas fa-pen-fancy"></i></button>
+                <button type="submit" class="btn p-0"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="comment-body font-size-1-15"></div>
+            <span class="text-muted d-none changeText"> (изменен)</span>
+        </div>
+        <div class="mb-1 d-flex gap-1 d-none btnChange">
+            <label><textarea class="form-control" rows="1"></textarea></label>
+            <button type="submit" class="btn btn-warning">Редактировать</button>
+        </div>
+        <div class="comment-date">
+            <span class="textCommentDate"></span>
+            <button class="btn btn-link p-0 replyBtn">Ответить</button>
+        </div>
+        <form class="commentReplyForm">
+            <div class="mb-1 d-flex gap-1 d-none btnReply">
+                <label><textarea class="form-control" rows="1"></textarea></label>
+                <button type="submit" class="btn btn-primary">Ответить</button>
+            </div>
+        </form>
+    </div>
+</li>
