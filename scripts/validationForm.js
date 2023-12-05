@@ -10,7 +10,8 @@ export function Validate(){
             registerPassword: {
                 required: true,
                 minlength: 6
-            }
+            },
+            textCom: "required"
         },
         messages: {
             email: {
@@ -22,7 +23,8 @@ export function Validate(){
             registerPassword: {
                 required: "Введите пароль",
                 minlength: "Минимальная длина пароля 6 символов"
-            }
+            },
+            textCom: "Введите комментарий"
         }
     })
 

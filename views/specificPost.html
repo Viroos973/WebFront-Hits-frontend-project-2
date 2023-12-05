@@ -14,7 +14,7 @@
         <div class="card-footer d-flex justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="count-comments m-0">0</p>
-                <button type="button" class="btn" id="text-comments"><i class="far fa-comment-dots"></i></button>
+                <button type="button" class="btn" id="text-comments" href="#"><i class="far fa-comment-dots"></i></button>
             </div>
             <div class="d-flex align-items-center">
                 <p class="count-like m-0">0</p>
@@ -29,6 +29,17 @@
             </ul>
         </div>
     </div>
+    <div class="card mx-auto mt-4 col-12 col-md-8 authorized" id="commentWrite">
+        <div class="card-body">
+            <form class="commentWriteForm" id="addCommentToPost">
+                <label for="com-write">Оставьте комментарий</label>
+                <textarea class="form-control" id="com-write" rows="5" name="textCom"></textarea>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary mt-2">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <li class="d-none rootComment">
@@ -36,30 +47,32 @@
         <div class="comment-header d-flex gap-1">
             <span class="comment-name"></span>
             <div class="d-none myComment">
-                <button type="submit" class="btn p-0"><i class="fas fa-pen-fancy"></i></button>
-                <button type="submit" class="btn p-0"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn p-0 editCom"><i class="fas fa-pen-fancy"></i></button>
+                <button type="button" class="btn p-0 deleteCom"><i class="fas fa-trash"></i></button>
             </div>
         </div>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center oldComment">
             <div class="comment-body font-size-1-15"></div>
-            <span class="text-muted d-none changeText"> (изменен)</span>
+            <span class="text-muted d-none changeText" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="1"> (изменен)</span>
         </div>
-        <div class="mb-1 d-flex gap-1 d-none btnChange">
-            <label><textarea class="form-control" rows="1"></textarea></label>
-            <button type="submit" class="btn btn-warning">Редактировать</button>
-        </div>
+        <form class="commentEditForm d-none">
+            <div class="mb-1 d-flex gap-1">
+                <label><textarea class="form-control editText" rows="1" name="textCom"></textarea></label>
+                <button type="submit" class="btn btn-warning">Редактировать</button>
+            </div>
+        </form>
         <div class="comment-date">
             <span class="textCommentDate"></span>
-            <button class="btn btn-link p-0 replyBtn">Ответить</button>
+            <button type="button" class="btn btn-link p-0 replyBtn authorized">Ответить</button>
         </div>
-        <form class="commentReplyForm">
-            <div class="mb-1 d-flex gap-1 d-none btnReply">
-                <label><textarea class="form-control" rows="1"></textarea></label>
+        <form class="commentReplyForm d-none">
+            <div class="mb-1 d-flex gap-1">
+                <label><textarea class="form-control replyText" rows="1" name="textCom"></textarea></label>
                 <button type="submit" class="btn btn-primary">Ответить</button>
             </div>
         </form>
         <div class="open-sub-comment d-none">
-            <button class="btn btn-link p-0 mb-1">Раскрыть ответы</button>
+            <button type="button" class="btn btn-link p-0 mb-1 openBtn">Раскрыть ответы</button>
             <ul class="list-unstyled ms-4 sub-comments d-none"></ul>
         </div>
     </div>
@@ -70,25 +83,27 @@
         <div class="comment-header d-flex gap-1">
             <span class="comment-name"></span>
             <div class="d-none myComment">
-                <button type="submit" class="btn p-0"><i class="fas fa-pen-fancy"></i></button>
-                <button type="submit" class="btn p-0"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn p-0 editCom"><i class="fas fa-pen-fancy"></i></button>
+                <button type="button" class="btn p-0 deleteCom"><i class="fas fa-trash"></i></button>
             </div>
         </div>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center oldComment">
             <div class="comment-body font-size-1-15"></div>
-            <span class="text-muted d-none changeText"> (изменен)</span>
+            <span class="text-muted d-none changeText" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="1"> (изменен)</span>
         </div>
-        <div class="mb-1 d-flex gap-1 d-none btnChange">
-            <label><textarea class="form-control" rows="1"></textarea></label>
-            <button type="submit" class="btn btn-warning">Редактировать</button>
-        </div>
+        <form class="commentEditForm d-none">
+            <div class="mb-1 d-flex gap-1">
+                <label><textarea class="form-control editText" rows="1" name="textCom"></textarea></label>
+                <button type="submit" class="btn btn-warning">Редактировать</button>
+            </div>
+        </form>
         <div class="comment-date">
             <span class="textCommentDate"></span>
-            <button class="btn btn-link p-0 replyBtn">Ответить</button>
+            <button type="button" class="btn btn-link p-0 replyBtn authorized">Ответить</button>
         </div>
-        <form class="commentReplyForm">
-            <div class="mb-1 d-flex gap-1 d-none btnReply">
-                <label><textarea class="form-control" rows="1"></textarea></label>
+        <form class="commentReplyForm d-none">
+            <div class="mb-1 d-flex gap-1">
+                <label><textarea class="form-control replyText" rows="1" name="textCom"></textarea></label>
                 <button type="submit" class="btn btn-primary">Ответить</button>
             </div>
         </form>

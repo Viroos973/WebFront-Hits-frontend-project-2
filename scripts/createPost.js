@@ -19,11 +19,12 @@ export function createBasicPost(post, template) {
     fillingAddress(post.addressId, postCard)
     postCard.find(".count-comments").text(post.commentsCount)
     postCard.find(".count-like").text(post.likes)
+    postCard.find("#text-comments").attr('href', post.id)
     if(post.hasLike) postCard.find("#hasLike").removeClass("far").addClass("fas")
     else postCard.find("#hasLike").removeClass("fas").addClass("far")
 
     postCard.find("#addOrDeleteLike").click(function (){
-        let likeIcon = this.querySelector('i');
+        let likeIcon = this.querySelector('i')
         if (likeIcon.classList.contains('far')) {
             addLikeFunction(post, postCard, likeIcon, postCard.find(".count-like").text())
         } else {
@@ -33,6 +34,11 @@ export function createBasicPost(post, template) {
 
     postCard.find("#post-title").click(function (){
         history.pushState({}, "", `/post/${$(this).attr('href')}`)
+        location.reload()
+    })
+
+    postCard.find("#text-comments").click(function (){
+        history.pushState({}, "", `/post/${$(this).attr('href')}/comment`)
         location.reload()
     })
 

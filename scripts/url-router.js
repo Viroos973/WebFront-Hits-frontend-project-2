@@ -3,7 +3,7 @@ import {registrationFunction} from "./register.js"
 import {profileFunction} from "./getProfile.js"
 import {filterFunction} from "./filter.js"
 import {UpdatePage} from "./updatePage.js";
-import {getPostFunc} from "./getPost.js";
+import {getComment, getPostFunc} from "./getPost.js";
 
 const route = (event) => {
     event = event || window.event
@@ -19,6 +19,7 @@ const route = (event) => {
 
 const routes = {
     "/post/:Id": getPostFunc,
+    "/post/:Id/comment": getComment,
     "/": filterFunction,
     "/login": loginFunction,
     "/register": registrationFunction,
@@ -37,8 +38,8 @@ export const handleLocation = async () => {
     }
 
     const route = routes[path]
-    UpdatePage()
     route(params)
+    UpdatePage()
 }
 
 window.onpopstate = handleLocation
