@@ -11,3 +11,16 @@ body {
 .footer {
     flex-shrink: 0;
 }
+
+.sub-comments {
+    border-left: 3px solid;
+    border-color: #42AAFF;
+}
+
+.font-size-1-15 {
+    font-size: 1.15rem;
+}
+
+.card {
+    overflow: auto;
+}

@@ -2,7 +2,7 @@ import {Validate} from "./validationForm.js";
 
 export async function editProfileFunction(data){
     document.getElementById("myContent").innerHTML =
-        await fetch("/BlogFrontend/views/profile.html").then((data) => data.text())
+        await fetch("/views/profile.html").then((data) => data.text())
 
     GiveParams(data)
 
