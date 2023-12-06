@@ -4,6 +4,7 @@ import {profileFunction} from "./getProfile.js"
 import {filterFunction} from "./filter.js"
 import {UpdatePage} from "./updatePage.js";
 import {getComment, getPostFunc} from "./getPost.js";
+import {authorsFunction} from "./authors.js";
 
 const route = (event) => {
     event = event || window.event
@@ -23,7 +24,8 @@ const routes = {
     "/": filterFunction,
     "/login": loginFunction,
     "/register": registrationFunction,
-    "/profile": profileFunction
+    "/profile": profileFunction,
+    "/authors": authorsFunction
 }
 
 export const handleLocation = async () => {
