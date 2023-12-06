@@ -21,6 +21,17 @@ body {
     font-size: 1.15rem;
 }
 
-.card {
+.card, .author{
     overflow: auto;
+}
+
+.imgAuthors{
+    width: 64px;
+    height: 64px;
+}
+
+.imgPlace{
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
 }

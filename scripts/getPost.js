@@ -1,6 +1,7 @@
 import {createBasicPost} from "./createPost.js";
 import {Validate} from "./validationForm.js";
 import {UpdatePage} from "./updatePage.js";
+import {getDate} from "./getDate.js";
 
 let targetElem
 
@@ -93,6 +94,7 @@ function createCommentCard(rootFilling, subCommentFilling, rootTemplate, subComm
         UpdatePage()
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        tooltipList
     })
 }
 
@@ -130,14 +132,11 @@ function fillingCommentElem(comment, commentFilling, userId, postId){
 
         if (commentFilling.modifiedDate !== null) {
             commentCard.find(".changeText").removeClass('d-none')
-            commentCard.find(".changeText").attr("data-bs-title", commentFilling.modifiedDate.substring(0, commentFilling.modifiedDate.indexOf("T"))
-                + " " + commentFilling.modifiedDate.substring(commentFilling.modifiedDate.indexOf("T") + 1,
-                    commentFilling.modifiedDate.indexOf("T") + 6))
+            commentCard.find(".changeText").attr("data-bs-title", getDate(commentFilling.modifiedDate))
         }
     }
 
-    commentCard.find(".textCommentDate").text(commentFilling.createTime.substring(0, commentFilling.createTime.indexOf("T"))
-        + " " + commentFilling.createTime.substring(commentFilling.createTime.indexOf("T") + 1, commentFilling.createTime.indexOf("T") + 6))
+    commentCard.find(".textCommentDate").text(getDate(commentFilling.createTime))
 
     let reply = commentCard.find(".commentReplyForm")
     let replyText = commentCard.find(".replyText")

@@ -1,15 +1,14 @@
+import {getDate} from "./getDate.js";
+
 export function createBasicPost(post, template) {
     let postCard = template.clone()
     postCard.removeAttr("id")
     postCard.removeClass("d-none")
 
     if (post.communityName)
-        postCard.find("#user-text").text(post.author + " - " + post.createTime.substring(0, post.createTime.indexOf("T"))
-            + " " + post.createTime.substring(post.createTime.indexOf("T") + 1, post.createTime.indexOf("T") + 6)
-            + " в сообществе '" + post.communityName + "'")
+        postCard.find("#user-text").text(post.author + " - " + getDate(post.createTime) + " в сообществе '" + post.communityName + "'")
     else
-        postCard.find("#user-text").text(post.author + " - " + post.createTime.substring(0, post.createTime.indexOf("T"))
-            + " " + post.createTime.substring(post.createTime.indexOf("T") + 1, post.createTime.indexOf("T") + 6))
+        postCard.find("#user-text").text(post.author + " - " + getDate(post.createTime))
 
     postCard.find("#post-title").text(post.title).attr('href', post.id)
     postCard.find(".img-fluid").attr("src", post.image)
