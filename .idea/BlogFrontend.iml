@@ -16,5 +16,6 @@
     <orderEntry type="library" name="jquery.mask" level="application" />
     <orderEntry type="library" name="jquery.maskedinput" level="application" />
     <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
   </component>
 </module>

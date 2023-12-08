@@ -1,22 +1,11 @@
 import {createBasicPost} from "./createPost.js";
+import {getTags} from "./getTags.js";
 
 export async function filterFunction(params){
     document.getElementById("myContent").innerHTML =
         await fetch("/views/filter.html").then((data) => data.text())
 
-    fetch('https://blog.kreosoft.space/api/tag', {
-        method: 'GET'
-    }).then((response) => {
-        if (response.ok){
-            return response.json()
-        }
-    }).then((json) => {
-        if (json !== undefined) {
-            for (let i = 0; i < json.length; i++){
-                $("#searchByTags").append('<option value="' + json[i].id + '">' + json[i].name + '</option>');
-            }
-        }
-    })
+    getTags($("#searchByTags"))
 
     fetch(`https://blog.kreosoft.space/api/post${params}`, {
         method: 'GET',
