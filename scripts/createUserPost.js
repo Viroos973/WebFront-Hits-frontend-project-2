@@ -3,8 +3,12 @@ import {getTags} from "./getTags.js";
 
 let level = 0
 let objectGuid = null
+let param
 
-export async function createUserPost(){
+export async function createUserPost(params){
+    history.replaceState({}, "", `/post/create`)
+    param = params.slice(1)
+
     document.getElementById("myContent").innerHTML =
         await fetch("/views/createUserPost.html").then((data) => data.text())
 
@@ -59,7 +63,8 @@ async function getCommunityName(Id){
         }
     }).then((json) => {
         if (json !== undefined) {
-            $("#createByGroups").append('<option value="' + Id + '">' + json.name + '</option>')
+            if (param === Id) $("#createByGroups").append('<option value="' + Id + '" selected>' + json.name + '</option>')
+            else $("#createByGroups").append('<option value="' + Id + '">' + json.name + '</option>')
         }
     })
 }

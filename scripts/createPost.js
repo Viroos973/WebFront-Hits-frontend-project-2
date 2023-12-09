@@ -10,7 +10,7 @@ export function createBasicPost(post, template) {
     else
         postCard.find("#user-text").text(post.author + " - " + getDate(post.createTime))
 
-    postCard.find("#post-title").text(post.title).attr('data-value', post.id)
+    postCard.find("#post-title").text(post.title)
 
     if (post.image){
         postCard.find(".img-fluid").attr("src", post.image)
@@ -23,7 +23,6 @@ export function createBasicPost(post, template) {
     fillingAddress(post.addressId, postCard)
     postCard.find(".count-comments").text(post.commentsCount)
     postCard.find(".count-like").text(post.likes)
-    postCard.find("#text-comments").attr('data-value', post.id)
     if(post.hasLike) postCard.find("#hasLike").removeClass("far").addClass("fas")
 
     postCard.find("#addOrDeleteLike").click(function (){
@@ -36,12 +35,12 @@ export function createBasicPost(post, template) {
     })
 
     postCard.find("#post-title").click(function (){
-        history.pushState({}, "", `/post/${$(this).data('value')}`)
+        history.pushState({}, "", `/post/${post.id}`)
         location.reload()
     })
 
     postCard.find("#text-comments").click(function (){
-        history.pushState({}, "", `/post/${$(this).data('value')}/comment`)
+        history.pushState({}, "", `/post/${post.id}/comment`)
         location.reload()
     })
 
