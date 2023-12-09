@@ -2,7 +2,7 @@ import {Validate} from "./validationForm.js";
 import {getTags} from "./getTags.js";
 
 let level = 0
-let objectGuid
+let objectGuid = null
 
 export async function createUserPost(){
     document.getElementById("myContent").innerHTML =
@@ -15,6 +15,18 @@ export async function createUserPost(){
     getTags($("#createByTags"))
     getUserCommunity()
     inputChange($("#addressElem"), 0)
+
+    $("#form-create-user-post").submit(function (event) {
+        event.preventDefault()
+        let data = GetParams()
+        let communityId = $("#createByGroups").val()
+
+        if (communityId === "0"){
+            createPostWithoutCommunity(data)
+        } else {
+            createPostWithCommunity(data, communityId)
+        }
+    })
 }
 
 async function getUserCommunity(){
@@ -54,6 +66,7 @@ async function getCommunityName(Id){
 
 function inputChange(div, lev){
     let obj = $(`#l-${lev}`)
+    let selectedData = ""
 
     if (lev === 0){
         obj.on('select2:select', function (){
@@ -80,8 +93,12 @@ function inputChange(div, lev){
         let parentId = $(`#l-${lev - 1}`)
 
         obj.on('select2:open', function (){
-            $('.select2-search__field').on('input', function() {
-                getAddressChild(parentId.val(), $(`#l-${lev}`), $(this).val())
+            let inputSelect = $('.select2-search__field')
+
+            inputSelect.val(selectedData)
+            inputSelect.off('input').on('input', function() {
+                selectedData = $(this).val()
+                getAddressChild(parentId.val(), $(`#l-${lev}`), selectedData)
             })
         })
 
@@ -106,6 +123,8 @@ function inputChange(div, lev){
                     addAddressElem(data.objectId)
                 }
             } else {
+                div.find('label').text("Нет элемента")
+
                 if (parentId.attr('id').match(/\d+/)[0] === '0') data = { objectGuid: "889b1f3a-98aa-40fc-9d3d-0f41192758ab" }
                 else data = parentId.find('option:selected').data('value')
             }
@@ -127,7 +146,8 @@ function addAddressElem(parentId){
     let select = $("<select></select>")
     select.addClass('selectAddress', 'form-control')
     select.attr('id', `l-${level}`)
-    select.append('<option value="0"></option>')
+    select.append('<option></option>')
+    select.append('<option value="0">-</option>')
 
     div.append(label)
     div.append(select)
@@ -145,7 +165,7 @@ function getAddressChild(parentId, select, query){
 
     if (query){
         url += `&query=${query}`
-        select.empty()
+        select.find('option:gt(1)').remove();
     }
 
     fetch(url, {
@@ -157,8 +177,70 @@ function getAddressChild(parentId, select, query){
     }).then((json) => {
         if (json !== undefined) {
             for (let data of json){
-                select.append('<option value="' + data.objectId + '" data-value=\'' + JSON.stringify(data) + '\'>' + data.text + '</option>');
+                select.append('<option value="' + data.objectId + '" data-value=\'' + JSON.stringify(data) + '\'>' + data.text + '</option>')
             }
+        }
+    })
+}
+
+function GetParams(){
+    let title = $("#createNamePost").val()
+    let description = $("#createTextPost").val()
+    let readingTime = $("#createReadingTime").val()
+    let image = $("#createImg").val()
+    let addressId = objectGuid
+    let tags = $("#createByTags").val()
+
+    return {
+        'title': title,
+        'description': description,
+        'readingTime': readingTime,
+        'image': image === ""? null : image,
+        'addressId': addressId,
+        'tags': tags
+    }
+}
+
+async function createPostWithoutCommunity(data){
+    fetch('https://blog.kreosoft.space/api/post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(data)
+    }).then((response) => {
+        if (!response.ok){
+            $("#form-create-user-post .error-mes").css('display', 'block')
+        } else {
+            return response.json()
+        }
+    }).then((json) => {
+        if (json !== undefined) {
+            history.pushState({}, "", "/")
+            location.reload()
+        }
+    })
+}
+
+async function createPostWithCommunity(data, communityId){
+    fetch(`https://blog.kreosoft.space/api/community/${communityId}/post`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(data)
+    }).then((response) => {
+        if (!response.ok){
+            $("#form-create-user-post .error-mes").css('display', 'block')
+        } else {
+            return response.json()
+        }
+    }).then((json) => {
+        if (json !== undefined) {
+            history.pushState({}, "", "/")
+            location.reload()
         }
     })
 }
