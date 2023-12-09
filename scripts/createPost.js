@@ -11,7 +11,12 @@ export function createBasicPost(post, template) {
         postCard.find("#user-text").text(post.author + " - " + getDate(post.createTime))
 
     postCard.find("#post-title").text(post.title).attr('href', post.id)
-    postCard.find(".img-fluid").attr("src", post.image)
+
+    if (post.image){
+        postCard.find(".img-fluid").attr("src", post.image)
+        postCard.find(".imgInDiv").removeClass('d-none')
+    }
+
     fillingDescription(post.description, postCard)
     postCard.find("#tags-text").text(post.tags.map(tag => "#" + tag.name + " "))
     postCard.find("#time-text").text("Время чтения: " + post.readingTime + " мин")

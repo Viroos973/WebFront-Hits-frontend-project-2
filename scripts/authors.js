@@ -13,24 +13,19 @@ export async function authorsFunction(){
     }).then((json) => {
         if (json !== undefined) {
             let authorTemplate = $(".author")
-            let popularAuthors = []
 
-            for (let author of json) {
-                popularAuthors.push(author)
-                if (popularAuthors.length > 3) {
-                    popularAuthors.sort((a, b) => b.posts - a.posts || b.likes - a.likes)
-                    popularAuthors.pop()
-                }
-            }
+            let popularAuthors = json.slice(0)
+            popularAuthors.sort((a, b) => b.posts - a.posts || b.likes - a.likes)
+            let topThreeAuthors = popularAuthors.slice(0, 3)
 
             for (let author of json){
                 let authorCard = createAuthors(author, authorTemplate)
 
-                if (author === popularAuthors[0]){
+                if (author === topThreeAuthors[0]){
                     authorCard.find(".imgPlace").removeClass("d-none").attr("src", "/views/images/1nt.png")
-                } else if (author === popularAuthors[1]){
+                } else if (author === topThreeAuthors[1]){
                     authorCard.find(".imgPlace").removeClass("d-none").attr("src", "/views/images/2nt.png")
-                } else if (author === popularAuthors[2]){
+                } else if (author === topThreeAuthors[2]){
                     authorCard.find(".imgPlace").removeClass("d-none").attr("src", "/views/images/3nt.png")
                 }
 
