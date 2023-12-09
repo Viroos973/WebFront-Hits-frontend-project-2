@@ -6,6 +6,7 @@ import {UpdatePage} from "./updatePage.js";
 import {getComment, getPostFunc} from "./getPost.js";
 import {authorsFunction} from "./authors.js";
 import {createUserPost} from "./createUserPost.js";
+import {communityListFunction} from "./communityList.js";
 
 const route = (event) => {
     event = event || window.event
@@ -27,7 +28,8 @@ const routes = {
     "/register": registrationFunction,
     "/profile": profileFunction,
     "/authors": authorsFunction,
-    "/post/create": createUserPost
+    "/post/create": createUserPost,
+    "/communities": communityListFunction
 }
 
 export const handleLocation = async () => {
