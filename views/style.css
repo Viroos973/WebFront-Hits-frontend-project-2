@@ -35,3 +35,7 @@ body {
     height: 40px;
     transform: rotate(45deg);
 }
+
+.error, .error-mes{
+    color: tomato;
+}
