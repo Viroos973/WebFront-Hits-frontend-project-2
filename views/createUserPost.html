@@ -1,0 +1,57 @@
+<div class="card-wrapper">
+    <div class="card mx-auto mt-4 col-md-8">
+        <div class="card-header">
+            Написать новый пост
+        </div>
+        <div class="card-body">
+            <form id="form-create-user-post">
+                <div class="row mt-3">
+                    <div class="col-md-9 mb-3">
+                        <label for="createNamePost" class="form-label">Название</label>
+                        <input type="text" class="form-control" id="createNamePost" name="namePost">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="createReadingTime" class="form-label">Время чтения</label>
+                        <input type="text" class="form-control" id="createReadingTime" name="readingTimePost">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md mb-3">
+                        <label for="createByGroups" class="form-label">Группа</label>
+                        <select class="form-select" id="createByGroups">
+                            <option value="0">Без группы</option>
+                        </select>
+                    </div>
+                    <div class="col-md mb-3">
+                        <label for="createByTags" class="form-label">Тэги</label>
+                        <select class="form-select" size="3" id="createByTags" name="tagsPost" multiple>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="createImg" class="form-label">Ссылка на картинку</label>
+                    <input type="url" class="form-control" id="createImg" name="imgPost">
+                </div>
+                <div class="mb-3">
+                    <label for="createTextPost">Текст</label>
+                    <textarea class="form-control" id="createTextPost" rows="7" name="textPost"></textarea>
+                </div>
+                <h4 class="mb-3">Адрес</h4>
+                <div id="address">
+                    <div class="mb-3" id="addressElem">
+                        <label for="l-0">Субъект РФ</label>
+                        <select class="selectAddress form-control" id="l-0">
+                            <option value="0" class="d-none"></option>
+                            <option value="0">-</option>
+                            <option value="1281271">обл Томская</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="submit" class="btn btn-primary">Создать пост</button>
+                </div>
+                <div class="text-center error-mes" style="display: none">Неверные данные</div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="card-wrapper">
+  <div class="card mx-auto mt-4 col-md-8">
+    <div class="card-body">
+      <form id="form-profile">
+        <div class="row my-3">
+          <div class="col-4">
+            <label for="exampleInputEmail" class="form-label">Email</label>
+          </div>
+          <div class="col-12 col-md-8">
+            <input type="email" disabled class="form-control" id="exampleInputEmail" name="email" placeholder="name@example.com" value ="">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label for="exampleInputUserName" class="form-label">ФИО</label>
+          </div>
+          <div class="col-12 col-md-8">
+            <input type="text" disabled class="form-control" id="exampleInputUserName" name="username" placeholder="Иванов Иван Иванович" value ="">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label for="exampleInputPhone" class="form-label">Номер Телефона</label>
+          </div>
+          <div class="col-12 col-md-8">
+            <input type="text" disabled class="form-control" id="exampleInputPhone" name="phone" placeholder="+7 (xxx) xxx-xx-xx" value ="">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label for="exampleInputGender" class="form-label">Пол</label>
+          </div>
+          <div class="col-12 col-md-8">
+            <select class="form-select" id="exampleInputGender" disabled>
+              <option value="0" >Мужской</option>
+              <option value="1">Женский</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label for="exampleInputBirthDate" class="form-label">Дата Рождения</label>
+          </div>
+          <div class="col-12 col-md-8">
+            <input type="date" disabled class="form-control" id="exampleInputBirthDate" name="birthDate" value ="">
+          </div>
+        </div>
+        <div class="d-flex justify-content-end gap-3 mb-3">
+          <button type="button" class="btn btn-primary" id="ChangeProfile" style="display: block">Изменить</button>
+          <button type="button" class="btn btn-secondary" id="CancelChange" style="display: none">Отмена</button>
+          <button type="submit" class="btn btn-primary" id="SaveChange" style="display: none">Сохранить</button>
+        </div>
+        <div class="text-center error-mes" style="display: none">Неверные данные</div>
+      </form>
+    </div>
+  </div>
+</div>

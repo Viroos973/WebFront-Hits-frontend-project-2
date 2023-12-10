@@ -1,0 +1,41 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer {
+    flex-shrink: 0;
+}
+
+.sub-comments {
+    border-left: 3px solid;
+    border-color: #42AAFF;
+}
+
+.font-size-1-15 {
+    font-size: 1.15rem;
+}
+
+.card, .author{
+    overflow: auto;
+}
+
+.imgAuthors{
+    width: 64px;
+    height: 64px;
+}
+
+.imgPlace{
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+}
+
+.error, .error-mes{
+    color: tomato;
+}

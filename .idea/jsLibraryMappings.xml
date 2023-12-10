@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{@popperjs/core, bootstrap, jquery-3.6.0}" />
+    <file url="PROJECT" libraries="{@popperjs/core, all, bootstrap, jquery, jquery-3.6.0, jquery-validate, jquery.mask, jquery.maskedinput, select2}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>
