@@ -1,4 +1,4 @@
-import {getUserCommunityBtn} from "./getBtnSubOrUnsub.js";
+import {getUserCommunityBtn} from "./exportFunc/getBtnSubOrUnsub.js";
 
 export async function communityListFunction(){
     document.getElementById("myContent").innerHTML =

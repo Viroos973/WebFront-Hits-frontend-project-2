@@ -1,7 +1,7 @@
-import {createBasicPost} from "./createPost.js";
-import {Validate} from "./validationForm.js";
-import {UpdatePage} from "./updatePage.js";
-import {getDate} from "./getDate.js";
+import {createBasicPost} from "./exportFunc/createPost.js";
+import {Validate} from "./exportFunc/validationForm.js";
+import {UpdatePage} from "./exportFunc/updatePage.js";
+import {getDate} from "./exportFunc/getDate.js";
 
 let targetElem
 

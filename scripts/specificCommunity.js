@@ -1,7 +1,7 @@
-import {getTags} from "./getTags.js";
-import {getUserCommunityBtn} from "./getBtnSubOrUnsub.js";
-import {createBasicPost} from "./createPost.js";
-import {getPagination} from "./getPagination.js";
+import {getTags} from "./exportFunc/getTags.js";
+import {getUserCommunityBtn} from "./exportFunc/getBtnSubOrUnsub.js";
+import {createBasicPost} from "./exportFunc/createPost.js";
+import {getPagination} from "./exportFunc/getPagination.js";
 
 export async function specificCommunityFunc(communityId, params) {
     document.getElementById("myContent").innerHTML =

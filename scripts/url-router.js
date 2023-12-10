@@ -2,7 +2,7 @@ import {loginFunction} from "./login.js"
 import {registrationFunction} from "./register.js"
 import {profileFunction} from "./getProfile.js"
 import {filterFunction} from "./filter.js"
-import {UpdatePage} from "./updatePage.js";
+import {UpdatePage} from "./exportFunc/updatePage.js";
 import {getComment, getPostFunc} from "./getPost.js";
 import {authorsFunction} from "./authors.js";
 import {createUserPost} from "./createUserPost.js";

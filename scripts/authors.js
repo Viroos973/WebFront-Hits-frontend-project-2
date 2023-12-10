@@ -1,4 +1,4 @@
-import {getDate} from "./getDate.js";
+import {getDate} from "./exportFunc/getDate.js";
 
 export async function authorsFunction(){
     document.getElementById("myContent").innerHTML =

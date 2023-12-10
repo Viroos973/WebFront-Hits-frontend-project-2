@@ -1,6 +1,6 @@
-import {createBasicPost} from "./createPost.js";
-import {getTags} from "./getTags.js";
-import {getPagination} from "./getPagination.js";
+import {createBasicPost} from "./exportFunc/createPost.js";
+import {getTags} from "./exportFunc/getTags.js";
+import {getPagination} from "./exportFunc/getPagination.js";
 
 export async function filterFunction(params){
     document.getElementById("myContent").innerHTML =

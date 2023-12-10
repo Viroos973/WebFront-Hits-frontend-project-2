@@ -1,4 +1,4 @@
-import {logoutFunction} from "./logout.js";
+import {logoutFunction} from "../logout.js";
 
 export async function UpdatePage(){
     fetch('https://blog.kreosoft.space/api/account/profile', {

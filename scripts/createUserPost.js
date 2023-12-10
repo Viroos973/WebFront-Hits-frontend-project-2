@@ -1,5 +1,5 @@
-import {Validate} from "./validationForm.js";
-import {getTags} from "./getTags.js";
+import {Validate} from "./exportFunc/validationForm.js";
+import {getTags} from "./exportFunc/getTags.js";
 
 let level = 0
 let objectGuid = null

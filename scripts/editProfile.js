@@ -1,4 +1,4 @@
-import {Validate} from "./validationForm.js";
+import {Validate} from "./exportFunc/validationForm.js";
 
 export async function editProfileFunction(data){
     document.getElementById("myContent").innerHTML =

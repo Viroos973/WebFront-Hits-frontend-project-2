@@ -39,6 +39,8 @@ async function subscribeFunc(community, communityId){
         if (response.ok){
             community.find(".unsubscribe").removeClass('d-none')
             community.find(".subscribe").addClass('d-none')
+
+            if (window.location.pathname !== "/communities") location.reload()
         }
     })
 }
@@ -53,6 +55,8 @@ async function unsubscribeFunc(community, communityId){
         if (response.ok){
             community.find(".subscribe").removeClass('d-none')
             community.find(".unsubscribe").addClass('d-none')
+            
+            if (window.location.pathname !== "/communities") location.reload()
         }
     })
 }

@@ -28,7 +28,8 @@ export function Validate(){
                 maxlength: 5000
             },
             imgPost: {
-                maxlength: 1000
+                maxlength: 1000,
+                url: true
             }
         },
         messages: {
@@ -59,7 +60,8 @@ export function Validate(){
                 maxlength: "Максимальная длина текста 5000 сиволов"
             },
             imgPost: {
-                maxlength: "Максимальная длина url картинки 1000 символов"
+                maxlength: "Максимальная длина url картинки 1000 символов",
+                url: "Введите коректную ссылку"
             }
         }
     })
